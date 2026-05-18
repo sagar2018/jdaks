@@ -1,0 +1,52 @@
+@extends('layouts.app')
+@section('title', 'Add Material')
+@section('content')
+<div class="d-flex align-items-center mb-4">
+    <a href="{{ route('projects.inventory.index', $project) }}" class="btn btn-sm btn-outline-secondary me-3">
+        <i class="bi bi-arrow-left"></i>
+    </a>
+    <h4 class="fw-bold mb-0">Add Material</h4>
+</div>
+<div class="row"><div class="col-lg-6">
+    <div class="card border-0 shadow-sm">
+        <div class="card-body p-4">
+            <form method="POST" action="{{ route('projects.inventory.materials.store', $project) }}">
+                @csrf
+                <div class="row g-3">
+                    <div class="col-md-4">
+                        <label class="form-label small fw-semibold">Material Code</label>
+                        <input type="text" name="material_code" class="form-control form-control-sm" value="{{ old('material_code') }}">
+                    </div>
+                    <div class="col-md-8">
+                        <label class="form-label small fw-semibold">Name <span class="text-danger">*</span></label>
+                        <input type="text" name="name" class="form-control form-control-sm @error('name') is-invalid @enderror"
+                               value="{{ old('name') }}" required>
+                        @error('name')<div class="invalid-feedback">{{ $message }}</div>@enderror
+                    </div>
+                    <div class="col-md-4">
+                        <label class="form-label small fw-semibold">Unit <span class="text-danger">*</span></label>
+                        <input type="text" name="unit" list="units2" class="form-control form-control-sm" value="{{ old('unit') }}" required>
+                        <datalist id="units2">
+                            @foreach(['MT', 'kg', 'm3', 'm2', 'No.', 'Ltr', 'Bag'] as $u)
+                                <option value="{{ $u }}">
+                            @endforeach
+                        </datalist>
+                    </div>
+                    <div class="col-md-4">
+                        <label class="form-label small fw-semibold">Opening Stock</label>
+                        <input type="number" name="opening_stock" step="0.001" class="form-control form-control-sm" value="{{ old('opening_stock', 0) }}">
+                    </div>
+                    <div class="col-md-4">
+                        <label class="form-label small fw-semibold">Reorder Qty</label>
+                        <input type="number" name="reorder_qty" step="0.001" class="form-control form-control-sm" value="{{ old('reorder_qty') }}">
+                    </div>
+                </div>
+                <div class="d-flex gap-2 mt-4">
+                    <button type="submit" class="btn btn-sm text-white" style="background:var(--accent-green);">Add Material</button>
+                    <a href="{{ route('projects.inventory.index', $project) }}" class="btn btn-sm btn-outline-secondary">Cancel</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div></div>
+@endsection

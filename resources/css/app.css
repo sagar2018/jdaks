@@ -1,0 +1,93 @@
+@import 'bootstrap/dist/css/bootstrap.min.css';
+@import 'bootstrap-icons/font/bootstrap-icons.css';
+
+/* ===== JDAKS Infra Design System ===== */
+:root {
+  --bg-page:       #EFEFEF;
+  --bg-surface:    #FFFFFF;
+  --text-primary:  #1A1A1A;
+  --accent-amber:  #C47C0A;
+  --accent-green:  #1A7A3A;
+  --accent-red:    #B03020;
+  --accent-blue:   #1A4FA0;
+  --sidebar-width: 240px;
+}
+
+body { background: var(--bg-page); color: var(--text-primary); font-family: system-ui, 'Segoe UI', sans-serif; font-size: 14px; }
+.bg-surface      { background: var(--bg-surface) !important; }
+.text-amber      { color: var(--accent-amber) !important; }
+.text-jdaks-green{ color: var(--accent-green) !important; }
+.text-jdaks-red  { color: var(--accent-red) !important; }
+.text-jdaks-blue { color: var(--accent-blue) !important; }
+.bg-amber        { background: var(--accent-amber) !important; color:#fff; }
+.bg-jdaks-green  { background: var(--accent-green) !important; color:#fff; }
+.bg-jdaks-red    { background: var(--accent-red) !important; color:#fff; }
+.bg-jdaks-blue   { background: var(--accent-blue) !important; color:#fff; }
+
+/* Cards */
+.card            { border-radius: 8px; border: none; box-shadow: 0 1px 4px rgba(0,0,0,.08); }
+.card-lg         { border-radius: 12px !important; }
+.metric-value    { font-size: 22px; font-weight: 700; }
+.label-sm        { font-size: 11px; }
+
+/* Progress bars */
+.progress        { height: 7px; border-radius: 4px; }
+.progress-bar-amber { background: var(--accent-amber); }
+.progress-bar-green { background: var(--accent-green); }
+
+/* Status pills */
+.badge-in-progress  { background: var(--accent-amber); color:#fff; }
+.badge-completed    { background: var(--accent-green); color:#fff; }
+.badge-overdue      { background: var(--accent-red);   color:#fff; }
+.badge-submitted    { background: var(--accent-blue);  color:#fff; }
+.badge-not-started  { background: #6c757d; color:#fff; }
+.badge-draft        { background: #adb5bd; color:#fff; }
+.badge-certified    { background: var(--accent-blue); color:#fff; }
+.badge-approved     { background: var(--accent-green); color:#fff; }
+.badge-paid         { background: #198754; color:#fff; }
+
+/* Sidebar */
+.app-sidebar {
+  width: var(--sidebar-width);
+  min-height: 100vh;
+  background: var(--bg-surface);
+  box-shadow: 2px 0 8px rgba(0,0,0,.06);
+  position: fixed;
+  top: 0; left: 0;
+  z-index: 1000;
+  overflow-y: auto;
+}
+.app-sidebar .sidebar-brand { padding: 1rem .75rem; border-bottom: 1px solid #f0f0f0; }
+.app-sidebar .sidebar-brand .brand-name { font-size: 16px; font-weight: 700; color: var(--accent-blue); }
+.app-sidebar .sidebar-brand .brand-sub  { font-size: 10px; color: #888; }
+.app-sidebar .nav-label { font-size: 10px; text-transform: uppercase; letter-spacing:.06em; color:#aaa; padding: .5rem .75rem .25rem; }
+.app-sidebar .nav-link  { color: var(--text-primary); font-size: 13px; border-radius: 6px; padding: .45rem .75rem; display:flex; align-items:center; gap:.5rem; }
+.app-sidebar .nav-link:hover,
+.app-sidebar .nav-link.active { background: rgba(196,124,10,.1); color: var(--accent-amber); font-weight:600; }
+.app-content  { margin-left: var(--sidebar-width); min-height: 100vh; }
+
+/* Topbar */
+.app-topbar { background: var(--bg-surface); box-shadow: 0 1px 4px rgba(0,0,0,.08); height: 56px; position: sticky; top:0; z-index: 900; }
+
+/* Module cards on hub */
+.module-card { border-radius: 12px; cursor: pointer; transition: transform .15s, box-shadow .15s; text-decoration: none; color: inherit; }
+.module-card:hover { transform: translateY(-2px); box-shadow: 0 4px 16px rgba(0,0,0,.12); color: inherit; }
+
+/* Stat strip */
+.stat-strip .stat-item { padding: .75rem 1.25rem; border-right: 1px solid #f0f0f0; }
+.stat-strip .stat-item:last-child { border-right: none; }
+
+/* Table tweaks */
+thead th { font-size: 12px; text-transform: uppercase; letter-spacing: .04em; color: #666; background: #fafafa; }
+
+/* Auth card */
+.auth-card { max-width: 420px; border-radius: 16px !important; }
+
+/* Mobile */
+@media (max-width: 767.98px) {
+  .app-sidebar { transform: translateX(-100%); transition: transform .25s; }
+  .app-sidebar.show { transform: translateX(0); }
+  .app-content  { margin-left: 0; }
+  .btn-mobile-full { width: 100%; }
+  .modal-fullscreen-sm-down { width:100%; max-width:100%; height:100%; margin:0; border-radius:0; }
+}
